@@ -1,0 +1,10 @@
+requests
+cueparser
+colorama
+httpx
+mwparserfromhell
+parse
+wikitextparser
+peewee
+bs4
+lxml

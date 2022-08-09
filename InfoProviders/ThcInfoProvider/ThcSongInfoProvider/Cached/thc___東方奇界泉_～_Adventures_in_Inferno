@@ -1,0 +1,356 @@
+{{同人专辑头部}}
+
+== 概述 ==
+<big>'''東方奇界泉 ～ Adventures in Inferno.'''<br></big>
+東方奇界泉 ～ Adventures in Inferno.<small>（とうほうきかいせん，''Touhou Kikaisen''）</small><br />
+<del>本作是东方Project[[官方游戏]]系列的第六作（Th06），运行在[[PC-98]]平台上，属于（[[官方游戏#旧作|旧作]]）。</del><br />
+<del>旧作的第六作，六关卡并追加Extra关卡。</del><br />
+实际上，这是一张旧作风同人专辑。根据宇佐城的说法，是摹拟神主于1999年推出新旧作的风格而写的。
+本专辑的前一次合作企划是[[東方天流宮　～ Heavenly Gathering of Clouds.]]。
+{{同人专辑信息|
+| 封面 = {{PAGENAME}}封面.png
+| 封面角色 = 博丽灵梦，爱丽丝（旧作角色），贝尔，幽香，梦谷绘梨香，内薇，皮珍，雾雨魔理沙，魅魔，黄泉美，冴月麟
+| 名称 = 東方奇界泉　～ Adventures in Inferno.
+| 译名 = 东方奇界泉　～ Adventures in Inferno.
+| 制作方 = スタジオネネム
+| 展会 = {{CM|3|89}}
+| 编号 = SNTH-0021
+| 类型 = 合作
+| 风格类型 = 游戏音乐
+| 会场售价 = 1000日元
+| 通贩售价 = 1400日元
+| 官网页面 = http://studionenem.net/tohofu2/
+| 
+}}
+
+== 游戏系统 ==
+主线共六个关卡，并另有Extra关。<br />
+可用角色有三个，每个角色是一种独特的配置：
+* 博丽灵梦（巫女小姐），自动追尾型
+* 雾雨魔理沙（魔法使小姐），前方贯通型
+* 爱丽丝（人偶使小姐），范围操作型
+[[游戏术语#炸弹|炸弹（BOMB）]]在不同人物下有着不同的表现和伤害。<br />
+根据玩家所选的不同角色，有不同的剧情、对话与结局（3种Bad End、3种Good End共6种结局）。
+
+== 故事背景 ==
+<poem>    ―在某个东之国的山中，博丽神社有些不安稳。
+   博丽神社的巫女，博丽灵梦这次没了空暇。
+   突然，境内开了个大洞。
+   从中涌出了怨灵和恶魔―</poem>
+*详细参见[[附带文档:东方奇界泉/Manual|故事背景]]
+
+== 角色 ==
+=== 自机 ===
+{{角色列表/框架|列表=
+{{角色列表/自机|
+|名称 = 博丽灵梦
+|消歧义 = 博丽灵梦（旧作角色）
+|称号 = {{博丽灵梦称号|1|怪绮谈}}
+|图片 = 文件:博丽灵梦（奇界泉立绘）.png
+|对话 = yes
+|结局 = yes
+|Extra = yes
+}}
+{{角色列表/自机|
+|名称 = 雾雨魔理沙
+|消歧义 = 雾雨魔理沙（旧作角色）
+|称号 = {{雾雨魔理沙称号|1|怪绮谈}}
+|图片 = 文件:雾雨魔理沙（奇界泉立绘）.png
+|对话 = yes
+|结局 = yes
+|Extra = yes
+}}
+{{角色列表/自机|
+|名称 = 爱丽丝
+|消歧义 = 爱丽丝（旧作角色）
+|称号 = 人偶使小姐
+|图片 = 文件:爱丽丝（奇界泉立绘）.png
+|对话 = yes
+|结局 = yes
+|Extra = yes
+}}
+}}
+
+=== BOSS ===
+{{角色列表/框架|列表=
+{{角色列表/单面|
+|面数 = 一面
+|道中 = -
+|道中音乐 = Neighborhood Adventure
+|BOSS  = 内薇
+|BOSS图片 = 文件:内薇（奇界泉立绘）.png
+|BOSS称号 = 地狱的小鬼
+|BOSS音乐 = 地狱的小鬼　～ past glory
+}}
+{{角色列表/单面|
+|面数 = 二面
+|道中 = -
+|道中音乐 = 永远的梦地狱
+|BOSS  = 皮珍
+|BOSS图片 = 文件:皮珍（奇界泉立绘）.png
+|BOSS称号 = 人类剑士
+|BOSS音乐 = Flutter the Dovecotes!
+}}
+{{角色列表/单面|
+|面数 = 三面
+|道中 = -
+|道中音乐 = The gateway to Hell
+|BOSS  = 贝尔
+|BOSS显示 = 贝尔
+|BOSS图片 = 文件:贝尔（奇界泉立绘）.png
+|BOSS称号 = 地狱的看门狗
+|BOSS音乐 = Carefree Guardian
+}}
+{{角色列表/单面|
+|面数 = 四面
+|道中 = -
+|道中音乐 = 冥道　～ Nether Road
+}}
+{{角色列表/单面|
+|面数 = 四A面
+|BOSS  = 魅魔
+|BOSS图片 = 文件:魅魔（奇界泉立绘）.png
+|BOSS称号 = 恶灵小姐
+|BOSS音乐 = Eternal Wickedness
+}}
+{{角色列表/单面|
+|面数 = 四B面
+|BOSS  = 幽香
+|BOSS显示 = 幽香
+|BOSS图片 = 文件:幽香（奇界泉立绘）.png
+|BOSS称号 = 妖怪小姐
+|BOSS音乐 = 梦幻的地狱华　～ Dreamy Amaryllis
+}}
+{{角色列表/单面|
+|面数 = 五面
+|道中 = -
+|道中音乐 = Closed World
+|BOSS  = 梦谷绘梨香
+|BOSS图片 = 文件:梦谷绘梨香（奇界泉立绘）.png
+|BOSS称号 = 恶魔博士
+|BOSS音乐 = Wonderland　～ 漂流而至
+}}
+{{角色列表/单面|
+|面数 = 六面
+|道中 = -
+|道中音乐 = 去往黄泉路
+|BOSS  = 黄泉美
+|BOSS图片 = 文件:黄泉美（奇界泉立绘）.png
+|BOSS称号 = 地狱的女王
+|BOSS音乐 = 幻想地变　～ Ultimate Phantom
+}}
+{{角色列表/单面|
+|面数 = EX面
+|道中 = -
+|道中音乐 = 幻亦酣
+|BOSS  = 冴月麟
+|BOSS显示 = 麟
+|BOSS图片 = 文件:麟（奇界泉立绘）.png
+|BOSS称号 = 仙女小姐
+|BOSS音乐 = 未来世纪的stella
+}}
+}}
+
+=== 其他 ===
+{{角色列表/框架|列表=
+{{角色列表/其他|
+|名称 = 玄爷
+|出现位置 = 游戏中 灵梦身旁<br>灵梦Ending
+}}
+}}
+
+== 附带文档 ==
+* [[附带文档:东方奇界泉/Manual|Manual]]
+
+== 其他资料 ==
+{|
+! 音乐 !! 图片 !! 其他
+|- valign="top"
+|
+* [[/Music|Music Room]]
+||
+* [[/Booklet|光盘图片]]
+||
+* [[/其他|其他相关资料]]
+* [[/攻略|游戏攻略]]
+* [[/分析考据|分析与考据]]
+|}
+
+== Staff ==
+{{专辑人员列表|
+|碟号=1
+|替换=
+まっきー =スタジオネネム
+桐生 =硫酸ポリオミノ
+森の子リスのミーコの大冒険 = http://www.nicovideo.jp/user/11781062
+あぶらあげ =ここから先、34小節目。
+HAMRIKU
+XRCreate = http://redquartzlab.tumblr.com/ Red Quartz Lab
+ちぇあ = http://www.nicovideo.jp/user/15544202
+権太夫 =外柿山
+めいす =Mace's Secret Base
+リュウオウ =夢想吟遊詩人
+あだぷとーる =Glassy:oceaN
+梅干茶漬け = http://umecha24909.tumblr.com/
+フランシウム = http://www.nicovideo.jp/user/3775026
+古山智之 = http://www.nicovideo.jp/user/18560526
+Wanwan = http://www.nicovideo.jp/mylist/15159770
+Shirona = https://soundcloud.com/wh_cat
+}}
+; 主催 : まっきー （[http://studionenem.blog31.fc2.com/ スタジオネネム]）
+; Story : 宇佐城 （[http://tukiusajou.blog.fc2.com/ 月宇佐城]）<br />森の子リスのミーコの大冒険 （[http://www.nicovideo.jp/user/11781062]）<br />donjuan （[http://blogs.yahoo.co.jp/bassclarinet12 シャレコーベ草原]）
+; Illustration : 桜木李杏 （[http://cynthia.cc/ Cynthia]）
+; Booklet背景 : スペキュラム合金
+; Design : 斬舞滅貴 （[http://www.pixiv.net/member.php?id=585380 てんぷれ廃屋]）
+; XFD动画 : めいす ([http://cyber-mace.wix.com/maces-secret-base Mace's Secret Base])<br />古山智之 ([http://www.nicovideo.jp/user/18560526]）
+; Web ：めいつ （[http://free-logic.net Free-Logic]）
+
+== 曲目列表 ==
+{{专辑曲目列表|
+| 嵌套 =
+{{同人曲目信息
+|名称 = 奇界泉　～ Adventures in Inferno
+|时长 = 04:02
+|编曲 = まっきー，
+|原曲 = {{幻想乡音乐名|3|29}}，
+}}
+{{同人曲目信息
+|名称 = Neighborhood Adventure
+|时长 = 03:58
+|编曲 = Wanwan，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 地獄の子鬼　～ past glory
+|时长 = 03:36
+|编曲 = HAMRIKU，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 夢地獄よ、永遠に
+|时长 = 03:09
+|编曲 = あだぷとーる，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = Flutter the Dovecotes!
+|时长 = 02:34
+|编曲 = 古山智之
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = The gateway to Hell
+|时长 = 03:26
+|编曲 = 梅干茶漬け
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = Carefree Guardian
+|时长 = 03:31
+|编曲 = XRCreate
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 冥道　～ Nether Road
+|时长 = 03:33
+|编曲 = フランシウム
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = Eternal Wickedness
+|时长 = 03:55
+|编曲 = ちぇあ
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 夢幻の地獄華　～ Dreamy Amaryllis
+|时长 = 03:31
+|编曲 = めいす
+|原曲 = {{幻想乡音乐名|3|13}}，
+}}
+{{同人曲目信息
+|名称 = Closed World
+|时长 = 03:49
+|编曲 = Shirona
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = Wonderland　～ 流れ着いて
+|时长 = 03:46
+|编曲 = 権太夫，森の子リスのミーコの大冒険，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 黄泉路をゆく
+|时长 = 01:52
+|编曲 = 桐生，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 幻想地変　～ Ultimate Phantom
+|时长 = 03:34
+|编曲 = 桐生，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 空を飛ぶ不思議な巫女
+|时长 = 02:23
+|编曲 = ちぇあ
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = Starry
+|时长 = 03:27
+|编曲 = 森の子リスのミーコの大冒険，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = Alice in Strange World
+|时长 = 01:54
+|编曲 = リュウオウ，
+|原曲 = {{怪绮谈音乐名|3|16}}，
+}}
+{{同人曲目信息
+|名称 = Endless Dream
+|时长 = 03:19
+|编曲 = HAMRIKU，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 休息の泉
+|时长 = 02:11
+|编曲 = XRCreate
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 幻も酣
+|时长 = 03:57
+|编曲 = 森の子リスのミーコの大冒険，
+|原曲 = 
+}}
+{{同人曲目信息
+|名称 = 未来世紀のステラ
+|时长 = 07:04
+|编曲 = あぶらあげ，
+|原曲 = 
+}}
+}}
+
+== 评论 ==
+<poem>[[#外部链接|官网]]上的介绍:
+感觉像是玩了幻之东方旧作STG的新作的音乐CD！
+
+从标题曲到EXBoss曲
+一气贯通的东方旧作风自作曲合同CD第2弹！
+
+[[#外部链接|虎穴]]上的介绍:
+幻之东方旧作STG的新作如今公开……！？从标题曲到EXBoss曲都有的东方旧作风自作曲合同CD！</poem>
+
+
+
+== 外部链接 ==
+* [http://studionenem.net/tohofu2/ 官网] {{日文标记}}
+* [http://www.toranoana.jp/mailorder/article/04/0030/37/15/040030371573.html 虎穴] {{日文标记}}
+
+{{Bottom}}
+<references/>

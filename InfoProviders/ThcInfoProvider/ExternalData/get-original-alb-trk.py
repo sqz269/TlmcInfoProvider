@@ -1,0 +1,2 @@
+from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.SongQuery import SongQuery
+from InfoProviders.ThcInfoProvider.ThcSongInfoProvider.Model.ThcSongInfoModel import Track

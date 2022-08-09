@@ -1,0 +1,75 @@
+{{同人专辑头部}}
+== 专辑信息 ==
+{{同人专辑信息|
+| 封面 = The Time When Madder Red Burns E.P.封面.jpg
+| 封面角色 = 十六夜咲夜
+| 名称 = The Time When Madder Red Burns E.P.
+| 译名 = 
+| 制作方 = Sound CYCLONE
+| 展会 = {{例大祭|3|5}}
+| 类型 = EP
+| 编号 = SDCY-0004
+| 会场售价 = 500日元
+| 官网页面 = http://cyclone.main.jp/disco/red/index.htm
+}}
+
+== Staff ==
+{{专辑人员列表|
+|碟号=
+|替换=
+sou=
+しゃばだば=Sound CYCLONE
+Witch=Sound CYCLONE
+Jumpei=http://yakousei.syuriken.jp/ 夜行性
+}}
+; Illustration : 水瀬修 （[http://www.sslake.com/ DROP DEAD!!]）
+
+== 曲目列表 ==
+{{专辑曲目列表|
+| 嵌套 =
+{{同人曲目信息|
+|名称 = Two of Us
+|时长 = 04:50
+|编曲 = しゃばだば
+|演唱 = Witch，Jumpei
+|作词 = しゃばだば
+|原曲 = {{红魔乡音乐名|3|13}}
+}}
+{{同人曲目信息|
+|名称 = FOB TONE
+|时长 = 04:19
+|编曲 = sou
+|原曲 = {{红魔乡音乐名|3|10}}
+}}
+{{同人曲目信息|
+|名称 = Two of Us (off vocal)
+|时长 = 04:51
+|编曲 = しゃばだば
+|原曲 = {{红魔乡音乐名|3|13}}
+}}
+{{同人曲目信息|
+|名称 = With you feat MOTH (off vocal)
+|时长 = 05:17
+|编曲 = しゃばだば
+}}
+{{同人曲目信息|
+|原专辑 = Silhouette
+|原名称 = Re:East Funky Dream
+|名称 = RE：East Funky Dream (off vocal)
+|时长 = 04:36
+|编曲 = sou，しゃばだば
+|原曲 = {{妖妖梦音乐名|3|10}}
+}}
+{{同人曲目信息|
+|原专辑 = Silhouette
+|原名称 = ココロノスキマ
+|名称 = ココロノスキマ (off vocal)
+|时长 = 04:48
+|编曲 = しゃばだば，sou
+|原曲 = {{妖妖梦音乐名|3|18}}
+}}
+}}
+
+== 评论 ==
+
+{{Bottom}}

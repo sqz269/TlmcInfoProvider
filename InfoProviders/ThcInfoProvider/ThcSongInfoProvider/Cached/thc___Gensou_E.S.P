@@ -1,0 +1,134 @@
+{{同人专辑头部}}
+
+== 专辑信息 ==
+{{同人专辑信息|
+| 封面 = jpg
+| 封面角色 = 宇佐见堇子，茨木华扇
+| 名称 = Gensou E.S.P
+| 译名 = 
+| 制作方 = 音召缶，
+| 展会 = {{CM|3|88}}
+| 编号 = OMK-36
+| 类型 = 全长
+| 风格类型 = 硬核，
+| 会场售价 = 1000日元
+| 通贩售价 = 1300日元
+| 官网页面 = http://otomekan.net/omk-36/
+| 特定选材 = 东方深秘录
+}}
+
+== Staff ==
+{{专辑人员列表|
+|碟号=1
+|替换=
+MUZIK SERVANT=音召缶
+Renna=音召缶
+taqumi=http://music-side.com/launen/ Launen
+UTA=音召缶
+うたこ=音召缶
+ITM=http://floater-io.net/ floater-io
+ねっぴ=こなぐすり
+まめみ=歌恋人
+LU-I=音召缶
+Richiter=http://www.lorb.info/ SoundTeam,LORB
+大瀬良あい=Innocent Key
+海兎=EastNewSound
+美里=http://ameblo.jp/misty-misato/ Misty
+Freezer=http://fsr.jpn.org/ Frozen System Records
+咲間絢水=
+}}
+; Guiter : ヲタクのこま
+; Vocal Edit : やまにょん （[http://yamanyon.wordpress.com/ nyonline record]）
+; Mastering : Hedonist （[http://katana-bits.jp/ Katana Bits]）
+; Design & Illustration : COBA （[http://cobaraku.jimdo.com/ COBARAKU]）
+
+== 曲目列表 ==
+{{专辑曲目列表|
+| 嵌套 =
+{{同人曲目信息|
+|名称 = Psychic temptation
+|时长 = 6:23
+|编曲 = MUZIK SERVANT，
+|演唱 = Renna，
+|作词 = Renna，
+|原曲 = {{深秘录音乐名|3|30}}，
+}}
+{{同人曲目信息|
+|名称 = Believable story
+|时长 = 4:54
+|编曲 = taqumi，
+|演唱 = UTA，
+|作词 = うたこ，
+|原曲 = {{深秘录音乐名|3|13}}，
+}}
+{{同人曲目信息|
+|名称 = プリズム
+|时长 = 4:27
+|编曲 = ITM，
+|演唱 = Renna，
+|作词 = Renna，
+|原曲 = {{深秘录音乐名|3|11}}，
+}}
+{{同人曲目信息|
+|名称 = カリソメレディ
+|时长 = 5:39
+|编曲 = ねっぴ，
+|演唱 = まめみ，
+|作词 = まめみ，
+|原曲 = {{深秘录音乐名|3|24}}，
+}}
+{{同人曲目信息|
+|名称 = Floating Butterfly
+|时长 = 6:25
+|编曲 = taqumi，
+|演唱 = まめみ，
+|作词 = まめみ，
+|原曲 = {{深秘录音乐名|3|1}}，
+}}
+{{同人曲目信息|
+|名称 = Face of Mind
+|时长 = 4:11
+|编曲 = LU-I，
+|演唱 = Renna，
+|作词 = Renna，
+|原曲 = {{深秘录音乐名|3|10}}，
+}}
+{{同人曲目信息|
+|名称 = FUNFUN Dancing!!
+|时长 = 5:42
+|编曲 = Richiter，
+|演唱 = 大瀬良あい，
+|作词 = 大瀬良あい，
+|原曲 = {{深秘录音乐名|3|3}}，
+}}
+{{同人曲目信息|
+|名称 = HOWLING at the MOON
+|时长 = 4:39
+|编曲 = MUZIK SERVANT，
+|演唱 = Renna，
+|作词 = 海兎，
+|原曲 = {{深秘录音乐名|3|28}}，
+}}
+{{同人曲目信息|
+|名称 = Your love is,My love is
+|时长 = 3:53
+|编曲 = LU-I，
+|演唱 = 美里，
+|作词 = 海兎，
+|原曲 = {{深秘录音乐名|3|7}}，
+}}
+{{同人曲目信息|
+|名称 = 深紅の邂逅
+|时长 = 4:52
+|编曲 = Freezer，
+|演唱 = 咲間絢水
+|作词 = 咲間絢水
+|原曲 = {{深秘录音乐名|3|29}}，
+}}
+}}
+
+== 评论 ==
+
+
+
+{{Bottom}}
