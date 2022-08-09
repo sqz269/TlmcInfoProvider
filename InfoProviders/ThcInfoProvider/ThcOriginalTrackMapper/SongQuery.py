@@ -69,7 +69,7 @@ class SongQuery:
 
     @staticmethod
     def cache_data(query):
-        source = TrackSource(id=query, query_kw=query)
+        source = TrackSource.create(id=query, query_kw=query)
 
         songs_all_lang = {}
         key_index = {}
@@ -106,7 +106,6 @@ class SongQuery:
         for song_data in d:
             r = OriginalTrack.create(**song_data)
             r.save()
-        source.save()
 
     @staticmethod
     def query(source, index, autofail:set={}, default=None):

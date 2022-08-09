@@ -232,8 +232,10 @@ class ThWikiCc:
     def _parse_track_info(data: str):
         data = mw.parse(data)
         track_templates = list(
-            filter(lambda x: x.name == "同人曲目信息", data.filter_templates())
+            filter(lambda x: x.name.strip() == "同人曲目信息", data.filter_templates())
         )
+
+        print(f"Found {len(track_templates)} track templates")
 
         tracks = []
         for idx, template in enumerate(track_templates, 1):
@@ -256,7 +258,7 @@ class ThWikiCc:
     @staticmethod
     def parse_seller(data: Wikicode):
         seller = list(
-            filter(lambda x: x.name == "通贩网址", data.filter_templates())
+            filter(lambda x: x.name.strip() == "通贩网址", data.filter_templates())
         )
 
         sellers = []
@@ -375,3 +377,8 @@ if (__name__ == '__main__'):
         import_data()
     
     process()
+
+    # a, t, s = ThWikiCc.process("https://thwiki.cc/LITTLE_WHEEL_EUCLASE")
+    # pprint(a)
+    # pprint(t)
+    # pprint(s)
