@@ -1,5 +1,7 @@
 from operator import imod
 from pprint import pprint
+import re
+from typing import List, Tuple
 import uuid
 import requests
 from bs4 import BeautifulSoup
@@ -13,6 +15,52 @@ class Lang:
     JP = "日文"
     EN = "英文"
     ZH = "中文"
+
+param_extr = re.compile("\{\{(.+)\|\d+\|(.+)\}\}")
+
+def bracket_split(str, fail_on_char=True, brackets={"(": ")", "{": "}", "[": "]"}):
+    stack = []
+    splitted = []
+    current = ""
+    for c in str.strip():
+        if brackets.get(c, None):
+            if (current and len(stack) == 0):
+                splitted.append(current)
+                current = ""
+            stack.append(c)
+            current += c
+            continue
+        if len(stack) > 0 and c == brackets[stack[-1]]:
+            stack.pop()
+            current += c
+            continue
+
+        if fail_on_char and len(stack) == 0 and c.strip():
+            raise Exception("Invalid string: " + str)
+        
+        current += c.strip()
+
+    if current:
+        splitted.append(current)
+    return splitted
+
+def get_original_song_query_params(songs: List[str]) -> List[Tuple[str, str]]:
+    querable = []
+    for s in songs:
+        if "原曲段落" in s:
+            continue
+
+        s = bracket_split(s.strip().replace("\n", ""))
+        for k in s:
+            param = param_extr.match(k)
+            if not param:
+                continue
+            groups = list(param.groups())
+                        
+            groups[0] = groups[0].strip().replace("花映冢", "花映塚")
+            querable.append((groups[0], groups[1].strip("0|")))
+    
+    return querable
 
 class SongQuery:
     TABLE_URL = "https://thwiki.cc/特殊:管理映射方案?view={query}/{lang}"

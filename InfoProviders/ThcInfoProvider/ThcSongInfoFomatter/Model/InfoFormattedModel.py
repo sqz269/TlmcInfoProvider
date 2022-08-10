@@ -1,17 +1,18 @@
 from operator import truediv
 from peewee import *
 
-InfoProviderDb = SqliteDatabase('./InfoProviders/ThcInfoProvider/ThcSongInfoProvider/Data/thc_song_data.db')
+InfoProviderDb = SqliteDatabase('./InfoProviders/ThcInfoProvider/ThcSongInfoFomatter/Data/formatted.db')
 
 
 class BaseModel(Model):
     class Meta:
         database = InfoProviderDb
 
-class ProcessStatus:
+class ProcessStatusFormatted:
     PENDING = "PENDING"
     PROCESSED = "PROCESSED"
     FAILED = "FAILED"
+    TRACK_COUNT_MISMATCH ="TRACK_COUNT_MISMATCH"
     PUSHED = "PUSHED"
 
 class AlbumFormatted(BaseModel):
@@ -20,7 +21,7 @@ class AlbumFormatted(BaseModel):
     album_name = TextField(null=True)
 
     release_date = TextField(null=True)
-    convention = TextField(null=True)
+    # convention = TextField(null=True)
     catalogno = TextField(null=True)
 
     number_of_disc = IntegerField(null=True)

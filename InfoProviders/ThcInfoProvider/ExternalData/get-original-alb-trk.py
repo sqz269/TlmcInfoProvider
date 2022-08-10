@@ -1,36 +1,8 @@
 import json
 import re
-from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.SongQuery import SongQuery
+from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.SongQuery import SongQuery, get_original_song_query_params
 from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.Model.OriginalTrackMapModel import OriginalTrack, TrackSource
 from InfoProviders.ThcInfoProvider.ThcSongInfoProvider.Model.ThcSongInfoModel import Track, ProcessStatus
-
-param_extr = re.compile("\{\{(.+)\|\d+\|(.+)\}\}")
-
-def bracket_split(str, fail_on_char=True, brackets={"(": ")", "{": "}", "[": "]"}):
-    stack = []
-    splitted = []
-    current = ""
-    for c in str.strip():
-        if brackets.get(c, None):
-            if (current and len(stack) == 0):
-                splitted.append(current)
-                current = ""
-            stack.append(c)
-            current += c
-            continue
-        if len(stack) > 0 and c == brackets[stack[-1]]:
-            stack.pop()
-            current += c
-            continue
-
-        if fail_on_char and len(stack) == 0 and c.strip():
-            raise Exception("Invalid string")
-        
-        current += c.strip()
-
-    if current:
-        splitted.append(current)
-    return splitted
 
 def discover():
 
@@ -44,25 +16,12 @@ def discover():
 
         parse = json.loads(track.original)
 
-        cq = 0
-        query_params = []
-        for i in parse:
-            if "原曲段落" in i:
-                continue
+        qp = get_original_song_query_params(parse)
 
-            i = bracket_split(i.strip().replace("\n", ""))
-            for k in i:
-                cq += 1
-                original_songs += 1
-                param = param_extr.match(k)
-                query_params.append(param.groups())
-
-        for q in query_params:
+        for q in qp:
             count += 1
-            print(f"Queried {count} tracks, {original_songs} Original songs [{cq}]", end="\r")
-            q = list(q)
-            q[0] = q[0].strip().replace("花映冢", "花映塚")
-            SongQuery.query(q[0], q[1].strip("0|"), autofail={"地灵殿PH音乐名"}, default="<ERROR>").title_en
+            print(f"Queried {count} tracks, {original_songs} Original songs [{len(qp)}]", end="\r")
+            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名"}, default="<ERROR>").title_en
 
 def load_existing(path):
     print("Loading existing...")
