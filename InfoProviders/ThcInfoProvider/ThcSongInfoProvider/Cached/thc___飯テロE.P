@@ -1,0 +1,110 @@
+{{同人专辑头部}}
+
+== 专辑信息 ==
+{{同人专辑信息|
+| 封面 = {{SUBPAGENAME}}封面.jpg
+| 封面角色 = 无
+| 名称 = 飯テロE.P.
+| 译名 = 
+| 制作方 = dat file records，脱兎屋
+| 展会 = {{M3|3|2015春}}
+| 编号 = datfile-021
+| 类型 = 全长，合作
+| 风格类型 = Trance，硬核，其他电子，
+| 会场售价 = 1000日元
+| 通贩售价 = 1500日元
+| 官网页面 = http://meshiterodatfile.tumblr.com/
+| 
+}}
+
+== Staff ==
+; DTP DesignWork : NiesoX （[http://niesox-discography.tumblr.com/ http://niesox-discography.tumblr.com/]）
+{{专辑人员列表|
+|碟号=1
+|替换=
+EnemY = https://twitter.com/kaoru1574 https://twitter.com/kaoru1574
+桔梗 = https://twitter.com/Kikyo_07 https://twitter.com/Kikyo_07
+Suimyu = http://www.suimyu.com/ http://www.suimyu.com/
+Yutaka Kouzaki = http://st-sdg.net/about/ http://st-sdg.net/about/
+Rin = http://kuronekolounge.sakura.ne.jp/neko/KuronekoLounge.html http://kuronekolounge.sakura.ne.jp/neko/KuronekoLounge.html
+b-UMB = https://twitter.com/crokasa https://twitter.com/crokasa
+Аутумн леавес ft.RYUWAVE = 
+falcon = https://twitter.com/0188falcon https://twitter.com/0188falcon
+ピストル餅屋 =dat file records
+
+}}
+
+== 曲目列表 ==
+{{专辑曲目列表|
+| 嵌套 =
+{{同人曲目信息|
+|名称 = Fly・ド・Potat
+|时长 = 
+|编曲 = EnemY
+|原曲 = 
+|备注 = 芋
+}}
+{{同人曲目信息|
+|名称 = わかさぎの天ぷら
+|时长 = 
+|编曲 = 桔梗
+|原曲 = {{辉针城音乐名|3|3}}，
+|备注 = わかさぎ
+}}
+{{同人曲目信息|
+|名称 = Cream Stew
+|时长 = 
+|编曲 = Suimyu
+|原曲 = 
+|备注 = シチュー
+}}
+{{同人曲目信息|
+|名称 = Zuzozo
+|时长 = 
+|编曲 = Yutaka Kouzaki
+|原曲 = 
+|备注 = ラーメン
+}}
+{{同人曲目信息|
+|名称 = 人体の98%は寿司
+|时长 = 
+|编曲 = Rin
+|原曲 = 
+|备注 = 寿司
+}}
+{{同人曲目信息|
+|名称 = ハードコア焼肉（炭）
+|时长 = 
+|编曲 = b-UMB
+|原曲 = 
+|备注 = ヤキニク
+}}
+{{同人曲目信息|
+|名称 = MESHIKING-スカムガバグラインドのアーメンノイズ添え-
+|时长 = 
+|编曲 = Аутумн леавес，RYUWAVE，
+|原曲 = 
+|备注 = バイキング
+}}
+{{同人曲目信息|
+|名称 = 東の国の飯テロの夜
+|时长 = 
+|编曲 = falcon
+|原曲 = {{文花帖音乐名|3|4}}，
+|备注 = 焼鳥
+}}
+{{同人曲目信息|
+|名称 = おい、パイ食わねぇか
+|时长 = 
+|编曲 = ピストル餅屋
+|原曲 = 
+|备注 = 大泉洋
+}}
+
+}}
+
+== 评论 ==
+
+
+
+{{Bottom}}

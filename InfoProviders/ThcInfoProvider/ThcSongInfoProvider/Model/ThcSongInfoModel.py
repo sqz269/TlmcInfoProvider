@@ -13,6 +13,15 @@ class ProcessStatus:
     PROCESSED = "PROCESSED"
     FAILED = "FAILED"
 
+    DB_PUSHED = "DB_PUSHED"
+    DB_ALL_VALID = "DB_ALL_VALID"
+    DB_REMOTE_NOT_FOUND = "DB_REMOTE_NOT_FOUND"
+    DB_ABORTED = "DB_ABORTED"
+    DB_PATCH_FAILED = "DB_PATCH_FAILED"
+    DB_PATCH_OK = "DB_PATCH_OK"
+    DB_ABORTED_TRACK_MISMATCH = "DB_ABORTED_TRACK_MISMATCH"
+    DB_ABORTED_TRACK_NAME_MISMATCH = "DB_ABORTED_TRACK_NAME_MISMATCH"
+
 class Album(BaseModel):
     album_id = TextField(primary_key=True, unique=True)
     title_jp = TextField(null=True)

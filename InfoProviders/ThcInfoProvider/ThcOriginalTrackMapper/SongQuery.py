@@ -49,7 +49,7 @@ def get_original_song_query_params(songs: List[str]) -> List[Tuple[str, str]]:
     for s in songs:
         if "原曲段落" in s:
             continue
-
+            
         s = bracket_split(s.strip().replace("\n", ""))
         for k in s:
             param = param_extr.match(k)
@@ -57,7 +57,12 @@ def get_original_song_query_params(songs: List[str]) -> List[Tuple[str, str]]:
                 continue
             groups = list(param.groups())
                         
-            groups[0] = groups[0].strip().replace("花映冢", "花映塚")
+            groups[0] = groups[0].strip() \
+                .replace("花映冢", "花映塚") \
+                .replace("緋想天", "绯想天") \
+                .replace("萃夢想", "萃梦想") \
+                .replace("憑依華", "凭依华") \
+                .replace("イザナギオブジェクト", "伊奘诺物质")
             querable.append((groups[0], groups[1].strip("0|")))
     
     return querable
@@ -166,8 +171,9 @@ class SongQuery:
                 raise Exception(f"No song found for source: {source} index: {index}")
             return OriginalTrack.mk_fail(source, default)
         if (not src_query.exists()):
-            print(f"No song found for source: {source}. Caching")
-            SongQuery.cache_data(source)
+            print(source)
+            # print(f"No song found for source: {source}. Caching")
+            # SongQuery.cache_data(source)
         if (not query.exists()):
             print(f"No song found for source: {source} index: {index}. Aborting")
             if (not default):

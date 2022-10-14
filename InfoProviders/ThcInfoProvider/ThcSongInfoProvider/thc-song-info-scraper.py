@@ -37,7 +37,7 @@ class ThWikiCc:
     # Full Width Comma
     FW_COMMA = '，'
     HEADER = {
-        'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="102", "Google Chrome";v="102"',
+        'sec-ch-ua': '" Not A;Brand"lyrics_author;v="99", "Chromium";v="102", "Google Chrome";v="102"',
         'Accept': 'application/json, text/javascript, */*; q=0.01',
         'Referer': 'https://thwiki.cc/',
         'X-Requested-With': 'XMLHttpRequest',

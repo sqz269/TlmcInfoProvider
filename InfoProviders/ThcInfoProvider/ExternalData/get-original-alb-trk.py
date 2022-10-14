@@ -4,6 +4,8 @@ from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.SongQuery import SongQ
 from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.Model.OriginalTrackMapModel import OriginalTrack, TrackSource
 from InfoProviders.ThcInfoProvider.ThcSongInfoProvider.Model.ThcSongInfoModel import Track, ProcessStatus
 
+exc = {"かごめかごめ"}
+
 def discover():
 
     print("Discovering original album and tracks...")
@@ -16,12 +18,17 @@ def discover():
 
         parse = json.loads(track.original)
 
-        qp = get_original_song_query_params(parse)
+        ps = []
+        for k in parse:
+            ps.extend([l.strip() for l in k.split(",") if l and l not in exc])
+
+        qp = get_original_song_query_params(ps)
 
         for q in qp:
             count += 1
+            original_songs += len(qp)
             print(f"Queried {count} tracks, {original_songs} Original songs [{len(qp)}]", end="\r")
-            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名"}, default="<ERROR>").title_en
+            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名"}, default="<ERROR>").title_en
 
 def load_existing(path):
     print("Loading existing...")

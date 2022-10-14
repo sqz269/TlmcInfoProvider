@@ -9,18 +9,10 @@ import unicodedata
 
 import httpx
 
-try:
-    from InfoProviders.BasicInfoProvider.Model.BasicInfoModel import (
-        BasicAlbum, BasicInfoDb, BasicTrack)
-    from InfoProviders.ThcInfoProvider.ThcSongInforProvider.Model.QueryModel import (
-        QueryData, QueryDataDb, QueryStatus)
-except:
-    currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-    parentdir = os.path.dirname(currentdir)
-    sys.path.insert(0, parentdir)
-    from BasicInfoProvider.Model.BasicInfoModel import (BasicAlbum,
-                                                        BasicInfoDb,
-                                                        BasicTrack)
+from InfoProviders.BasicInfoProvider.Model.BasicInfoModel import (
+    BasicAlbum, BasicTrack)
+from InfoProviders.ThcInfoProvider.ThcQueryProvider.Model.QueryModel import (
+    QueryData, QueryDataDb, QueryStatus)
 
 def import_data():
     print("Importing data from Basic Info Provider Databse...")
@@ -117,6 +109,7 @@ def process_data():
             result = query_thc(album.album_name)
             album.query_result = json.dumps(result)
             if (not result['results']):
+                print("Processing complete: NO_RESULT")
                 album.query_status = QueryStatus.NO_RESULT
                 album.save()
                 time.sleep(1.5)
@@ -130,7 +123,7 @@ def process_data():
                 album.query_exact_result = json.dumps(result)
             print(f"Process Complete: {status}")
             album.save()
-            time.sleep(1.5)
+            time.sleep(0.5)
         except Exception as e:
             print("Error: ", e)
             continue
