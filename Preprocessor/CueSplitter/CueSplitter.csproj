@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="FFMpegCore" Version="4.8.0" />
+    <PackageReference Include="System.Text.Json" Version="7.0.0-rc.2.22472.3" />
     <PackageReference Include="UTF.Unknown" Version="2.5.1" />
   </ItemGroup>
 
