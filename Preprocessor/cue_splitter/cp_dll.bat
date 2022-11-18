@@ -1,0 +1,1 @@
+robocopy Preprocessor\cue_split_info_provider\CueSplitInfoProvider\CueSplitInfoProvider\bin\Release\net6.0\publish Preprocessor\cue_splitter\lib /s /e

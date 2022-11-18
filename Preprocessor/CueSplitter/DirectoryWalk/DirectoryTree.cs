@@ -1,5 +1,4 @@
 using CueSplitter.DirectoryWalk;
-using System.Diagnostics.CodeAnalysis;
 
 public interface IDirectoryTree
 {

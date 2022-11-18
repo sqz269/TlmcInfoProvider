@@ -1,7 +1,4 @@
-﻿
-using System.Diagnostics;
-using System.Text;
-using CueSplitter.DirectoryWalk;
+﻿using System.Text;
 using FFMpegCore;
 using CueSplitter;
 

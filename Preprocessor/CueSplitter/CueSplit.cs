@@ -1,9 +1,4 @@
-﻿using System.Drawing;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Xml;
-using FFMpegCore;
-using FFMpegCore.Arguments;
+﻿using FFMpegCore;
 
 namespace CueSplitter;
 

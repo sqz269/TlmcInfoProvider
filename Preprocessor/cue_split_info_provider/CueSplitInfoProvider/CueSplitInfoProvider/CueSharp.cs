@@ -36,7 +36,11 @@ Website:  wyday.com/cuesharp
 
 // MK: fixes to substring processing
 
+using System;
 using System.Text;
+using System.IO;
+using System.Linq;
+using System.Collections.Generic;
 
 // namespace CueSharp;
 

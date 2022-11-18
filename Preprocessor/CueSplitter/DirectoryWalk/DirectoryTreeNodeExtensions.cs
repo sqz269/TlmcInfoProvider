@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace CueSplitter.DirectoryWalk;
+﻿namespace CueSplitter.DirectoryWalk;
 
 public static class DirectoryTreeNodeExtensions
 {
