@@ -31,7 +31,8 @@ def walk_root(root="."):
 if (__name__ == '__main__'):
     data = {}
     i = 0
-    for circle, album, fp_map in walk_root():
+    root = input("Enter TLMC root directory")
+    for circle, album, fp_map in walk_root(root):
         print(f"Scanning {i}", end='\r')
         i += 1
         if data.get(circle) is None:
