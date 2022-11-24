@@ -6,7 +6,7 @@ import re
 
 CIRCLE_INFO_EXTRACTOR = re.compile(r'\[(.+)\]')
 ALBUM_INFO_EXTRACTOR = re.compile(r'(\d{4}(?:\.\d{2})?(?:\.\d{2})?)? ?(?:\[(.+\-.+)\])? ?(.+)')
-TRACK_INFO_EXTRACTOR = re.compile(r'(?:\((\d+)\) )?(?:\[(.+)\] )?(.+)(?:(?:.mp3)|(?:.flac))')
+TRACK_INFO_EXTRACTOR = re.compile(r'(?:(?:\{|\()(\d+)(?:\}|\)) )?(?:(?:\[|\{)(.+)(?:\]|\}) )?(.+)(?:(?:.mp3)|(?:.flac))')
 
 def walk_root(root="."):
     circles = os.listdir(root)

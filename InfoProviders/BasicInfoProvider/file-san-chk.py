@@ -5,10 +5,10 @@ import re
 
 CIRCLE_INFO_EXTRACTOR = re.compile(r'\[(.+)\]')
 ALBUM_INFO_EXTRACTOR = re.compile(r'(\d{4}(?:\.\d{2})?(?:\.\d{2})?)? ?(?:\[(.+\-.+)\])? ?(.+)')
-TRACK_INFO_EXTRACTOR = re.compile(r'(?:\((\d+)\) )?(?:\[(.+)\] )?(.+)(?:(?:.mp3)|(?:.flac))')
+TRACK_INFO_EXTRACTOR = re.compile(r'(?:(?:\{|\()(\d+)(?:\}|\)) )?(?:(?:\[|\{)(.+)(?:\]|\}) )?(.+)(?:(?:.mp3)|(?:.flac))')
 
 
-with open("data.json", "r", encoding="utf-8") as file:
+with open(r"InfoProviders\BasicInfoProvider\data.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
     for circle, albums in data.items():

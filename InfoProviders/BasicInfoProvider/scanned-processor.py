@@ -28,7 +28,7 @@ Potential ways to handle splitting:
 
 CIRCLE_INFO_EXTRACTOR = re.compile(r'\[(.+)\]')
 ALBUM_INFO_EXTRACTOR = re.compile(r'(\d{4}(?:\.\d{2})?(?:\.\d{2})?)? ?(?:\[(.+\-.+)\])? ?(.+)')
-TRACK_INFO_EXTRACTOR = re.compile(r'(?:\((\d+)\) )?(?:\[(.+)\] )?(.+)(?:(?:.mp3)|(?:.flac))')
+TRACK_INFO_EXTRACTOR = re.compile(r'(?:(?:\{|\()(\d+)(?:\}|\)) )?(?:(?:\[|\{)(.+)(?:\]|\}) )?(.+)(?:(?:.mp3)|(?:.flac))')
 
 IMAGE_FILE_SUFFIX = (".jpg", "tif", "png")
 
@@ -198,7 +198,7 @@ def push(result):
         BasicTrack.bulk_create(track_obj[i:i+BULK_SIZE])
 
 if (__name__ == '__main__'):
-    with open(r"data.json", "r", encoding="utf-8") as file:
+    with open(r"InfoProviders\BasicInfoProvider\data.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 
     results = process(data)   
