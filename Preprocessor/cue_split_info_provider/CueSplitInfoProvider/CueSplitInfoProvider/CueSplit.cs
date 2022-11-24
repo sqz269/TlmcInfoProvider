@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -50,7 +51,7 @@ public static class CueSplit
     {
         var sb = new List<string>();
         
-        sb.Add($"({track.TrackNumber})");
+        sb.Add($"({track.TrackNumber:00})");
 
         if (!string.IsNullOrWhiteSpace(track.Performer))
         {
@@ -74,7 +75,7 @@ public static class CueSplit
         return str;
     }
 
-    private static List<string> TryFindCueTrack(string root, CueSheet origin)
+    private static List<string>? TryFindCueTrack(string root, string cuePath, CueSheet origin)
     {
         var excludeExtensions = new List<string>
         {
@@ -82,7 +83,7 @@ public static class CueSplit
             ".log",
             ".txt"
         };
-
+        
         var reg = new Regex("(?:.+ - )?(.+)\\..+", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         // if there is only one flac file in the root directory.
@@ -90,18 +91,19 @@ public static class CueSplit
         var dir = new DirectoryInfo(root);
         var flacs = new List<FileInfo>();
 
+        var cueCharacteristic = reg.Match(Path.GetFileName(cuePath)).Groups[1].Value;
         var characteristic = reg.Match(origin.Tracks[0].DataFile.Filename).Groups[1].Value;
 
         foreach (var fileInfo in dir.GetFiles())
         {
-            if (excludeExtensions.Any((s => fileInfo.Name.EndsWith(s))))
+            if (excludeExtensions.Any(s => fileInfo.Name.EndsWith(s)))
             {
                 continue;
             }
 
             var characteristicFile = reg.Match(fileInfo.Name).Groups[1].Value;
 
-            if (characteristic.Equals(characteristicFile))
+            if (characteristic.Equals(characteristicFile) || cueCharacteristic.Equals(characteristicFile))
             {
                 flacs.Add(fileInfo);
                 continue;
@@ -113,16 +115,14 @@ public static class CueSplit
             }
         }
 
-        switch (flacs.Count)
+        return flacs.Count switch
         {
-            case 0:
-                return flacs.Select(f => f.FullName).ToList();
-            case > 1:
+            1 => flacs.Select(f => f.FullName).ToList(),
+            > 1 =>
                 // return the file with the highest size
-                return flacs.OrderByDescending(sel => sel.Length).Select(f => f.FullName).ToList();
-            default:
-                return null;
-        }
+                flacs.OrderByDescending(sel => sel.Length).Select(f => f.FullName).ToList(),
+            _ => null
+        };
     }
 
     private static TrackProcess MkSplitArgs(Track track, CueSheet origin, Index begin, Index? end, string root)
@@ -146,19 +146,22 @@ public static class CueSplit
         // only the first file have data file prop
         var filePath = Path.Combine(root, sheet.Tracks[0].DataFile.Filename);
         string guessedPath = null;
-        var guessedCandidate = new List<string>();
+        List<string>? guessedCandidate = new List<string>();
         var invalid = false;
 
         if (!File.Exists(filePath))
         {
-            guessedCandidate = TryFindCueTrack(root, sheet);
+            guessedCandidate = TryFindCueTrack(root, cuePath, sheet);
 
-            if (guessedCandidate == null || guessedCandidate.Count == 0)
+            if (guessedCandidate == null || guessedCandidate?.Count == 0)
             {
                 invalid = true;
+                
             }
-
-            guessedPath = guessedCandidate[0];
+            else
+            {
+                guessedPath = guessedCandidate[0];
+            }
         }
 
         var album = new AlbumProcess()
@@ -173,6 +176,7 @@ public static class CueSplit
             Tracks = new List<TrackProcess>(),
             Invalid = invalid
         };
+
         for (var i = 0; i < sheet.Tracks.Length; i++)
         {
             var track = sheet.Tracks[i];

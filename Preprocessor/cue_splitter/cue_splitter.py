@@ -35,31 +35,64 @@ else:
 from CueSplitter import CueSplit
 from System.IO import *
 
+MANUAL_EXCLUDE = [
+    "2015.12.30 [MKAC-1502] 記憶 [C89]",
+    "2017.12.29 Counsel of three Sessions [C93]"
+]
+
 def mk_ffmpeg_cmd(track, info):
     """
     root: the root path of the file we are processing
     track: the track we are processing, should be a dict
     info: the album info of the track, should be a dict
     """
+    audio_path = info["AudioFilePath"]
+    if (info["AudioFilePathGuessed"]):
+        audio_path = info["AudioFilePathGuessed"]
+
     out = os.path.join(info["Root"], track["TrackName"])
     if (not track["Duration"]):
-        return f'-i "{info["AudioFilePath"]}" -ss {track["Begin"]} -movflags faststart "{out}" -y -stats -v quiet'
+        return f'-i "{audio_path}" -ss {track["Begin"]} -movflags faststart "{out}" -y -stats -v quiet'
 
-    return f'-i "{info["AudioFilePath"]}" -ss {track["Begin"]} -t {track["Duration"]} -movflags faststart "{out}" -y -stats -v quiet'
+    return f'-i "{audio_path}" -ss {track["Begin"]} -t {track["Duration"]} -movflags faststart "{out}" -y -stats -v quiet'
 
 def generate_file_list(root, list_file):
     print("Generating file list...")
-    output = {"processed": {}, "queued": {}, "failed": {}, "parse_fail": []}
+    output = {"processed": {}, "queued": {}, "failed": {}, "parse_fail": [], "ignore": []}
+    
+    TRACK_INFO_EXTRACTOR = re.compile(r'(?:\((\d+)\) )?(?:\[(.+)\] )?(.+)(?:(?:.mp3)|(?:.flac))')
 
     cue_to_parse = {}
-    scan_failed = []
     count = 0
+    skipped = 0
     for fp, dirs, files in os.walk(root):
+        skip = False
+        for exclude in MANUAL_EXCLUDE:
+            if (exclude in fp):
+                print(f"Skipping {fp} due to manual exclude")
+                # input()
+                skipped += 1
+                skip = True
+        if (skip):
+            continue
+
+        to_add = None
+        individual_flac = []
         for file in files:
+            m = TRACK_INFO_EXTRACTOR.match(file)
+            if (m != None and m.group(1) and os.path.getsize(os.path.join(fp, file)) > 0):
+                individual_flac.append(file)
             if file.endswith(".cue"):
-                cue_to_parse.update({ fp: os.path.join(fp, file) })
-                count += 1
-                print(f"Found {count} files", end="\r")
+                to_add = { fp: os.path.join(fp, file) }
+
+        if (not individual_flac and to_add):
+            cue_to_parse.update(to_add)
+            count += 1
+            print(f"Found {count} files", end="\r")
+        elif (to_add):
+            skipped += 1
+            individual_flac.append(to_add[list(to_add.keys())[0]])
+            output["ignore"].append({fp: individual_flac})
 
     if (count == 0):
         print("No cue files found at: " + root)
@@ -68,6 +101,9 @@ def generate_file_list(root, list_file):
 
     print("Parsing Found Cue Files")
 
+    direct = 0
+    guessed = 0
+    failed = 0
     for root, cue_file in cue_to_parse.items():
         print(f"Parsing {cue_file}")
         
@@ -75,16 +111,21 @@ def generate_file_list(root, list_file):
         out = json.loads(out)
 
         if (out["Invalid"]):
+            failed += 1
             print(Fore.RED + f"Invalid Audio Path {cue_file}")
             output["parse_fail"].append(out)
             continue
 
         if (out["AudioFilePathGuessed"]):
+            guessed += 1
             print(Fore.YELLOW + f"Guessed Audio File Path: {out['AudioFilePath']}")
+        else:
+            direct += 1
         out["processed"] = False
         output["queued"].update({cue_file: out})
 
-    output["parse_fail"] = scan_failed
+    print(f"Found {direct + guessed + failed} audio paths, {guessed} guessed paths, {failed} failed paths, {skipped} ignored")
+
     with open(list_file, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=4, ensure_ascii=False)
 
@@ -104,6 +145,7 @@ def process_item(file_list, file: str, ffmpeg_path):
 
         for idx, track in enumerate(item["Tracks"]):
             cmd = mk_ffmpeg_cmd(track, item)
+
             proc = subprocess.Popen(ffmpeg_path + " " + cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, shell=True, encoding="utf-8")
 
             for line in proc.stdout:
@@ -116,8 +158,11 @@ def process_item(file_list, file: str, ffmpeg_path):
         item["processed"] = True
         file_list["processed"].update({file: item})
         del file_list["queued"][file]
-        # os.unlink(item["src"])
-        # os.rename(item["dst"], item["src"])
+
+        audio_track = item["AudioFilePath"] if not item["AudioFilePathGuessed"] else item["AudioFilePathGuessed"]
+
+        os.unlink(item["CueFilePath"])
+        os.unlink(audio_track)
     except Exception as e:
         print(Fore.RED + f"Failed to process {file}")
         traceback.print_exc()
@@ -162,7 +207,8 @@ if (__name__ == '__main__'):
                 processes.append(executor.submit(process_item, loaded_list, file, ffmpeg_path))
                 queued += 1
                 print(f"Queued {queued} processes", end="\r")
-            print("ABCD")
+
+            time.sleep(1)
             try:
                 key = print_logs.keys()
                 while any([p.running() for p in processes]):
