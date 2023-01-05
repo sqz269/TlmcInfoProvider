@@ -2,6 +2,7 @@ from peewee import *
 import os
 
 QueryDataDb = SqliteDatabase(r'./InfoProviders/ThcInfoProvider/ThcQueryProvider/Data/query_data.db')
+# QueryDataDb = SqliteDatabase(None) # Deferring database initialization
 
 class BaseModel(Model):
     class Meta:
