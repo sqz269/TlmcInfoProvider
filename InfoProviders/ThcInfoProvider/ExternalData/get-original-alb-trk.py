@@ -6,6 +6,23 @@ from InfoProviders.ThcInfoProvider.ThcSongInfoProvider.Model.ThcSongInfoModel im
 
 exc = {"かごめかごめ"}
 
+def strict_split(str, sep=",", brackets={"(": ")", "{": "}", "[": "]"}):
+    stack = []
+    parts = []
+    part = ""
+    for c in str:
+        if (c in brackets.keys()):
+            stack.append(c)
+        elif (c in brackets.values()):
+            stack.pop()
+        elif (c == sep and not stack):
+            parts.append(part)
+            part = ""
+            continue
+        part += c
+    parts.append(part)
+    return parts
+
 def discover():
 
     print("Discovering original album and tracks...")
@@ -20,7 +37,7 @@ def discover():
 
         ps = []
         for k in parse:
-            ps.extend([l.strip() for l in k.split(",") if l and l not in exc])
+            ps.extend([l.strip() for l in strict_split(k) if l and l not in exc])
 
         qp = get_original_song_query_params(ps)
 
@@ -28,7 +45,7 @@ def discover():
             count += 1
             original_songs += len(qp)
             print(f"Queried {count} tracks, {original_songs} Original songs [{len(qp)}]", end="\r")
-            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名"}, default="<ERROR>").title_en
+            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名."}, default="<ERROR>").title_en
 
 def load_existing(path):
     print("Loading existing...")
@@ -47,7 +64,9 @@ def load_existing(path):
 
 def create_blank_sheet(existing):
     print("Creating blank sheet...")
-    exist = load_existing(existing)
+    exist = {}
+    if (existing):
+        exist = load_existing(existing)
     col_names = "Id,Type,Abbriv,Full Name En,Full Name Zh,Full Name Jp,Short Name En,Short Name Zh,Short Name Jp"
 
     lines = []

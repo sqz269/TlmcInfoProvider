@@ -120,7 +120,7 @@ def parse_original_tracks(track_original: str, album_id_map: dict):
     if (not track_original or not track_original.strip()):
         return []
 
-    org_ignore = ["Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "かごめかごめ", "地灵殿PH音乐名", "东方夏夜祭音乐名"]
+    org_ignore = {"Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "かごめかごめ", "地灵殿PH音乐名", "东方夏夜祭音乐名", "地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名"}
 
     parsed = json.loads(track_original)
     ps = []
@@ -225,7 +225,7 @@ def patch(alb_patch, trk_patch) -> bool:
         r = requests.patch(trk_url, json=trk_data)
         print(trk_url)
         if (r.status_code != 200):
-            print("\nFailed to patch track", trk_id, r.status_code, "\n")
+            print("\nFailed to patch track", trk_id, r.status_code, r.content, "\n")
             return False
 
     return True
@@ -266,6 +266,10 @@ def push():
             # print(normalize(track_name))
             track_updates.update({remote_track["id"]: track_update})
 
+        # pprint(track_updates)
+        # print(album_update)
+        # input()
+
         success = patch(album_update, track_updates)
         # time.sleep(1)
         if (success):
@@ -302,11 +306,11 @@ def check_push():
 
         for track_name, track_data in local_track_map.items():
             remote_track = gt_track(remote_album["tracks"], track_name)
-            print(remote_track)
-            input()
+            # print(remote_track)
+            # input()
 
 if (__name__ == '__main__'):
     # filter()
     # comp()
     push()
-    # check_push()
+    check_push()

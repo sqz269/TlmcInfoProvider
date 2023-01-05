@@ -6,6 +6,8 @@ import unicodedata
 import requests
 from InfoProviders.ThcInfoProvider.ThcOriginalTrackMapper.Model.OriginalTrackMapModel import OriginalTrack
 
+IGNORE = {"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名"}
+
 def map_line(line) -> dict:
     line = [i.strip() for i in line.split(",")]
     b = {
@@ -66,7 +68,7 @@ def map_track_attr(track: OriginalTrack, src_id: Dict) -> Dict:
 
 def load_tracks(album_map: Dict):
     loaded = {}
-    for track in OriginalTrack.select():
+    for track in OriginalTrack.select(OriginalTrack, OriginalTrack.source).where(OriginalTrack.source.not_in(IGNORE)):
         src, map = map_track_attr(track, album_map)
         if src not in loaded:
             loaded[src] = []
@@ -96,6 +98,11 @@ if (__name__ == '__main__'):
     original_track_map = load_tracks(original_album_map)
     # pprint(original_track_map)
     # pprint(original_album_map)
+
+    # write track map to json
+    with open("original_track_map.json", "w", encoding="utf-8") as f:
+        json.dump(original_track_map, f, ensure_ascii=False, indent=4)
+
     album_add_endpoint = input("Album CREATE endpoint: ") or "http://localhost:5217/api/source/album"
     track_add_endpoint = input("Track CREATE endpoint: ") or "http://localhost:5217/api/source/album/{albumId}/track"
     commit(original_album_map, original_track_map, track_add_endpoint, album_add_endpoint)

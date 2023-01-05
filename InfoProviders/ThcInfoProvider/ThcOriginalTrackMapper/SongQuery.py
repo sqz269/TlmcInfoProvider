@@ -171,9 +171,9 @@ class SongQuery:
                 raise Exception(f"No song found for source: {source} index: {index}")
             return OriginalTrack.mk_fail(source, default)
         if (not src_query.exists()):
-            print(source)
-            # print(f"No song found for source: {source}. Caching")
-            # SongQuery.cache_data(source)
+            # print(source)
+            print(f"No song found for source: {source}. Caching")
+            SongQuery.cache_data(source)
         if (not query.exists()):
             print(f"No song found for source: {source} index: {index}. Aborting")
             if (not default):
