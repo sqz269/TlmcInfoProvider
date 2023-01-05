@@ -2,7 +2,7 @@
 {{缺少专辑信息|会场售价}}
 == 专辑信息 ==
 {{同人专辑信息|
-| 封面 = {{PAGENAME}}封面.png
+| 封面 = png
 | 封面角色 = 雾雨魔理沙，
 | 名称 = SCARLET HEARTS
 | 译名 = 
@@ -15,6 +15,8 @@
 | 通贩售价 = 1296日元
 | 通贩售价补充 = （含税）
 | 官网页面 = http://www.緋月ノ雫.jp/scarlethearts
+| 官网补充 = {{失效标记}}<small>（[https://web.archive.org/web/20190101121838/http://www.緋月ノ雫.jp/scarlethearts 缓存页面]）</small>
+| 备注 = 东方×[[wzh:风格王國之心系列|王国之心系列]]风格
 | 
 }}
 {{通贩列表|
@@ -22,11 +24,6 @@
 | 类型 = 蜜瓜
 | 编号 = 354421
 | 标题 = 专售
-}}
-{{通贩网址|
-| 类型 = 其他
-| 编号 = https://www.melonbooks.com/index.php?main_page=product_info&products_id=IT0000203330
-| 标题 = ：蜜瓜DL
 }}
 
 }}
