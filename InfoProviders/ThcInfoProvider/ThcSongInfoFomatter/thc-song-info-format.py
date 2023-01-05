@@ -54,7 +54,9 @@ def precheck():
     trk_no_title = Track.select().where(Track.title_jp == None).count()
     if alb_no_title > 0 or trk_no_title > 0:
         print("Precheck failed: There are {} albums and {} tracks with no title".format(alb_no_title, trk_no_title))
-        exit(1)
+        c = input("Ignore Error and Continue?")
+        if c.lower() != "y":
+            exit(1)
 
 def resolve_original_tracks(track: Track, abbriv_map: Dict):
     if not track.original:
@@ -64,7 +66,7 @@ def resolve_original_tracks(track: Track, abbriv_map: Dict):
     org_tracks = []
     for qp in query_params:
         try:
-            result = SongQuery.query(qp[0], qp[1], autofail={"地灵殿PH音乐名"})
+            result = SongQuery.query(qp[0], qp[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名"})
         except:
             print("\n\n[ERROR] Failed to resolve original track: {}\n\n".format(qp))
             continue
@@ -122,12 +124,15 @@ def import_data():
     imp_trk_count = 0
     imp_mismatch_count = 0
     print("Selecting albums...")
-    albums = Album.select().where(Album.process_status == ProcessStatus.PROCESSED).execute()
+    albums = Album.select().where(Album.process_status == ProcessStatus.PROCESSED & Album.title_jp != None).execute()
     print("Selected {} albums".format(len(albums)))
     for album in albums:
         tracks = Track.select().where(Track.album == album)
         # Do some checks
         basic_tracks = BasicTrack.select().where(BasicTrack.album == album.album_id)
+        if (any([t.title_jp == None for t in tracks])):
+            print(f"\n\nTrack title missing for Album: {album.album_id}. Skipping\n\n")
+            continue
         if len(basic_tracks) != len(tracks):
             imp_mismatch_count += 1
             print(f"\n\nTrack count mismatch for Album: {album.album_id} [Basic: {len(basic_tracks)} | Data: {len(tracks)}]\n\n")
