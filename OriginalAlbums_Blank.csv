@@ -1,4 +1,11 @@
 Id,Type,Abbriv,Full Name En,Full Name Zh,Full Name Jp,Short Name En,Short Name Zh,Short Name Jp
+弹幕狂音乐名,Game,HBM,Bulletphilia-tachi no Yami-Ichiba ~ 100th Black Market,弹幕狂们的黑市 ~ 100th Black Market,バレットフィリア達の闇市場 ~ 100th Black Market,100th Black Market,弹幕狂们的黑市,バレットフィリア達の闇市場
+刚欲异闻音乐名,Game,SCJ,Touhou Gouyoku Ibun ~ Suibotsushita Chinshuu Jigoku,东方刚欲异闻 ~ 被水淹没的沉愁地狱,東方剛欲異聞 ~ 水没した沈愁地獄,Touhou Gouyoku Ibun,东方刚欲异闻,東方剛欲異聞
+天空璋音乐名,Game,HSiFS,Touhou Tenkuushou ~ Hidden Star in Four Seasons,东方天空璋 ~ Hidden Star in Four Seasons,東方天空璋 ~ Hidden Star in Four Seasons,Hidden Star in Four Seasons,东方天空璋,東方天空璋
+凭依华音乐名,Game,AoCF,Touhou Hyouibana ~ Antinomy of Common Flowers,东方凭依华 ~ Antinomy of Common Flowers,東方憑依華 ~ Antinomy of Common Flowers,Antinomy of Common Flowers,东方凭依华,東方憑依華
+外来韦编音乐名,CD-Side,SCoOW,Touhou Gairai Ihen ~ Strange Creators of Outer World,东方外来韦编 ~ Strange Creators of Outer World.,東方外來韋編 ~ Strange Creators of Outer World,Strange Creators of Outer World,东方外来韦编,東方外來韋編
+噩梦日记音乐名,Game,VD,Hifuu Nightmare Diary ~ Violet Detector,秘封噩梦日记 ~ Violet Detector,秘封ナイトメアダイアリー ~ Violet Detector,Violet Detector,噩梦日记,ナイトメアダイアリー
+虹色的北斗七星音乐名,CD,RCS,Rainbow-Colored Septentrion,虹色的北斗七星,虹色のセプテントリオン,Rainbow-Colored Septentrion,虹色的北斗七星,虹色のセプテントリオン
 幺乐团1音乐名,CD,AUSv1,History of Yougakudan 1 ~ Akyu's Untouched Score vol.1,幺乐团的历史 ~ Akyu's Untouched Score vol.1,幺樂団の歴史1 ~ Akyu's Untouched Score vol.1,Akyu's Untouched Score vol.1,Akyu's Untouched Score vol.1,Akyu's Untouched Score vol.1
 幺乐团2音乐名,CD,AUSv2,History of Yougakudan 2 ~ Akyu's Untouched Score vol.2,幺乐团的历史 ~ Akyu's Untouched Score vol.2,幺樂団の歴史2 ~ Akyu's Untouched Score vol.2,Akyu's Untouched Score vol.2,Akyu's Untouched Score vol.2,Akyu's Untouched Score vol.2
 幺乐团3音乐名,CD,AUSv3,History of Yougakudan 3 ~ Akyu's Untouched Score vol.3,幺乐团的历史 ~ Akyu's Untouched Score vol.3,幺樂団の歴史3 ~ Akyu's Untouched Score vol.3,Akyu's Untouched Score vol.3,Akyu's Untouched Score vol.3,Akyu's Untouched Score vol.3
@@ -23,11 +30,9 @@ GoM音乐名,CD-Side,GoM,The Grimoire of Marisa,The Grimoire of Marisa,The Grimo
 求闻史纪音乐名,CD-Side,PMiSS,Touhou Gumon Shiki ~ Perfect Memento in Strict Sense,东方求闻史纪 ~ Perfect Memento in Strict Sense,東方求聞史紀 ~ Perfect Memento in Strict Sense,Perfect Memento in Strict Sense,东方求闻史纪,東方求聞史紀
 三月精S音乐名,CD-Side,SaBND,Touhou Sangetsusei ~ Strange and Bright Nature Deity,东方三月精 ~ Strange and Bright Nature Deity.,東方三月精 ~ Strange and Bright Nature Deity,Strange and Bright Nature Deity,东方三月精,東方三月精
 儚月抄音乐名,CD-Side,SSiB,Touhou Bougetsushou ~ Silent Sinner in Blue,东方儚月抄 ~ Silent Sinner in Blue,東方儚月抄 ~ Silent Sinner in Blue,Silent Sinner in Blue,东方儚月抄,東方儚月抄
-凭依华音乐名,Game,AoCF,Touhou Spirit Possession Bloom ~ Antinomy of Common Flowers,东方凭依华 ~ Antinomy of Common Flowers,東方憑依華 ~ Antinomy of Common Flowers,Antinomy of Common Flowers,东方凭依华,東方憑依華
-天空璋音乐名,Game,HSiFS,Touhou Tenkuushou ~ Hidden Star in Four Seasons,东方天空璋 ~ Hidden Star in Four Seasons,東方天空璋 ~ Hidden Star in Four Seasons,Hidden Star in Four Seasons,东方天空璋,東方天空璋
-辉针城音乐名,Game,DDC,Touhou Kishinjou ~ Double Dealing Character,东方辉针城　～ Double Dealing Character,東方輝針城 ~ Double Dealing Character,Double Dealing Character,东方辉针城,東方輝針城
+辉针城音乐名,Game,DDC,Touhou Kishinjou ~ Double Dealing Character,东方辉针城 ~ Double Dealing Character,東方輝針城 ~ Double Dealing Character,Double Dealing Character,东方辉针城,東方輝針城
 文花帖DS音乐名,Game,DS,Double Spoiler ~ Touhou Bunkachou,Double Spoiler ~ 东方文花帖,ダブルスポイラー ~ 東方文花帖,Touhou Bunkachou,东方文花帖DS,ダブルスポイラー
-红魔乡音乐名,Game,EoSD,Touhou Koumakyou ~ the Embodiment of Scarlet Devil ,东方红魔乡 ~ the Embodiment of Scarlet Devil,東方紅魔郷 ~ the Embodiment of Scarlet Devil,the Embodiment of Scarlet Devil,东方红魔乡,東方紅魔郷
+红魔乡音乐名,Game,EoSD,Touhou Koumakyou ~ the Embodiment of Scarlet Devil ,东方红魔乡 ~ the Embodiment of Scarlet Devil,東方紅魔郷 ~ the Embodiment of Scarlet Devil,Embodiment of Scarlet Devil,东方红魔乡,東方紅魔郷
 大战争音乐名,Game,GFW,Great Fairy Wars ~ Eastern Three Fairies,妖精大战争 ~ 东方三月精,妖精大戦争 ~ 東方三月精,Great Fairy Wars,妖精大战争,妖精大戦争
 非想天则音乐名,Game,HISOU,Touhou Hisoutensoku ~ Choudokyuu Ginyoru no Nazo o Oe,东方非想天则 ~ 追寻特大型人偶之谜,東方非想天則 ~ 超弩級ギニョルの謎を追え,Hisoutensoku,东方非想天则,東方非想天則
 心绮楼音乐名,Game,HM,Touhou Shinkirou ~ Hopeless Masquerade,东方心绮楼 ~ Hopeless Masquerade.,東方心綺楼 ~ Hopeless Masquerade,Hopeless Masquerade,东方心绮楼,東方心綺楼
