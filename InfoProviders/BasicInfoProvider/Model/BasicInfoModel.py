@@ -9,10 +9,19 @@ class BaseModel(Model):
     class Meta:
         database = BasicInfoDb
 
+class BasicCircle(BaseModel):
+    id = TextField(primary_key=True, unique=True)
+    name = TextField(null=True)
+    alias = TextField(null=True)
+
+class BasicCircleUnparsedMap(BaseModel):
+    id = TextField(primary_key=True, unique=True)
+    unparsed_name = TextField()
+    circle_id = ForeignKeyField(BasicCircle, backref='circle')
+
 class BasicAlbum(BaseModel):
     album_id = TextField(primary_key=True, unique=True)
     album_name = TextField()
-    performer = TextField(null=True)
     release_date = TextField(null=True)
     disc_id = TextField(null=True)
     release_convention = TextField(null=True)
@@ -26,6 +35,10 @@ class BasicAlbum(BaseModel):
     target_cue_path = TextField(null=True)
     target_audio = TextField(null=True)
 
+class BasicAlbumPerformer(BaseModel):
+    album_id = ForeignKeyField(BasicAlbum, backref='albums')
+    performer_id = ForeignKeyField(BasicCircle, backref='circles')
+
 class BasicTrack(BaseModel):
     track_id = TextField(primary_key=True, unique=True)
     album = ForeignKeyField(BasicAlbum, backref='tracks')
@@ -37,4 +50,4 @@ class BasicTrack(BaseModel):
     error_status = TextField(null=True)
 
 BasicInfoDb.connect()
-BasicInfoDb.create_tables([BasicAlbum, BasicTrack])
+BasicInfoDb.create_tables([BasicAlbum, BasicTrack, BasicCircle, BasicCircleUnparsedMap, BasicAlbumPerformer])

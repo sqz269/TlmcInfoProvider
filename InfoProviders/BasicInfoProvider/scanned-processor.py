@@ -3,9 +3,11 @@ import json
 import re
 from typing import Any, Dict, List
 from uuid import uuid4
-from InfoProviders.BasicInfoProvider.Model.BasicInfoModel import BasicAlbum, BasicTrack
+from InfoProviders.BasicInfoProvider.Model.BasicInfoModel import BasicAlbum, BasicTrack, BasicAlbumPerformer, BasicCircle, BasicCircleUnparsedMap
 
 """
+SOLVED: SEE PREPROCESS/CUE_SPLITTER.PY
+
 TODO: FLAG CERTAIN ALBUMS FOR CUE SPLITTING.
 SOME OF THE ALBUMS HAVE MERGED TRACKS AND NEED TO BE SPLIT.
 THIS SPECIAL STATUS SHOULD BE MARKED WHEN INSERTING INTO THE DATABASE.
@@ -27,8 +29,16 @@ Potential ways to handle splitting:
 """
 
 CIRCLE_INFO_EXTRACTOR = re.compile(r'\[(.+)\]')
-ALBUM_INFO_EXTRACTOR = re.compile(r'(\d{4}(?:\.\d{2})?(?:\.\d{2})?)? ?(?:\[(.+\-.+)\])? ?(.+)')
+# some of the dates ends with .xx
+"""
+2008.05.xx [HATU-001] Lunna＊Musique
+2019.xx.xx Renatus (from Bite a Blood)
+2015.10.25 [SEFU-008] Phantom of the Flame [M3-36]
+"""
+ALBUM_INFO_EXTRACTOR = re.compile(r'(\d{4}(?:\..{2})?(?:\..{2})?)? ?(?:\[(.+\-.+)\])? ?(.+)')
 TRACK_INFO_EXTRACTOR = re.compile(r'(?:(?:\{|\()(\d+)(?:\}|\)) )?(?:(?:\[|\{)(.+)(?:\]|\}) )?(.+)(?:(?:.mp3)|(?:.flac))')
+
+CIRCLE_INFO_SEPARATOR = re.compile(r'')
 
 IMAGE_FILE_SUFFIX = (".jpg", "tif", "png")
 
@@ -107,13 +117,20 @@ def process(data):
                 release_date = album_info.group(1)
                 catalog = album_info.group(2)
                 title, convention = parse_title(album_info.group(3))
+
+            artist = []
+            query: BasicCircleUnparsedMap
+            for query in BasicCircleUnparsedMap.select().where(BasicCircleUnparsedMap.unparsed_name == circle):
+                c = BasicCircle.select().where(BasicCircle.id == query.circle_id).get()
+                artist.append(c)
+
             album_data = {}
             album_data["album_id"] = str(uuid4())
             album_data["album_name"] = title
             album_data["release_date"] = release_date
             album_data["catalog_number"] = catalog
             album_data["release_convention"] = convention
-            album_data["performer"] = album_artist
+            album_data["performer"] = artist
             album_data["album_img"] = None
             album_data["other_img"] = []
             album_data["other_files"] = []
@@ -164,15 +181,20 @@ def normalize_obj(obj: Dict[str, Any]):
 def push(result):
     album_obj = []
     track_obj = []
+    album_artist_join_table = []
     alb_count = 0
     trk_count = 0
     for album in result:
         alb_tmp = album.copy()
         del alb_tmp["tracks"]
+        del alb_tmp["performer"]
 
         normalize_obj(alb_tmp)
 
         t = BasicAlbum(**alb_tmp)
+
+        for cir in album["performer"]:
+            album_artist_join_table.append(BasicAlbumPerformer(album_id=t.album_id, performer_id=cir.id))
 
         tracks = album["tracks"]
 
@@ -193,6 +215,11 @@ def push(result):
     for i in range(0, len(album_obj), BULK_SIZE):
         print("Inserting album {} to {}".format(i, i + BULK_SIZE))
         BasicAlbum.bulk_create(album_obj[i:i+BULK_SIZE])
+    
+    for i in range(0, len(album_artist_join_table), BULK_SIZE):
+        print("Inserting album artist join {} to {}".format(i, i + BULK_SIZE))
+        BasicAlbumPerformer.bulk_create(album_artist_join_table[i:i+BULK_SIZE])
+
     for i in range(0, len(track_obj), BULK_SIZE):
         print("Inserting track {} to {}".format(i, i + BULK_SIZE))
         BasicTrack.bulk_create(track_obj[i:i+BULK_SIZE])
