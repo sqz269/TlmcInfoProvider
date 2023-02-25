@@ -1,0 +1,48 @@
+{{社团头部}}
+
+== 社团信息 ==
+{{封面图
+|图片={{PAGENAME}}banner.png|banner
+}}
+{{同人社团信息|
+| 社团名 = YuelStudio.org
+| 中文名 = 
+| 主要作品类型 = 同人音乐
+| 成立时间 = 2001-07-20
+| 当前状态 = 解散
+| 主催 = Yuel Y.
+| 地区 = 日本
+| 官网 = http://yuelstudio.org/
+| 官网说明 = {{失效标记}}<small>（[https://web.archive.org/web/20141218123928/http://yuelstudio.org/ 缓存页面]）</small>
+| 官网2 = http://umc.yuelstudio.org/projects.php?pid=7
+| 官网说明2 = {{失效标记}}<small>（[https://web.archive.org/web/20080131064603/http://umc.yuelstudio.org/projects.php?pid=7 缓存页面]）</small>
+}}
+
+== 成员名单 ==
+* [[Yuel Y.]] （a.k.a. '''ゆえる　わい。'''）
+: [https://www.nicovideo.jp/user/1182006 NicoNico ID: 1182006]
+* [[速川 瑞樹]]
+: 个人网站：[http://mizuki5.s35.xrea.com/ Fistaria] {{失效标记}}
+* [[深麻 由幸]]
+: 个人网站：[http://seirei.ath.cx/hukama/ 鴉のような漆黒に響く] {{失效标记}}
+* [[millefeui]]
+: 个人网站：[http://yura.ntwk.jp/ 吸血歌姫は月夜に啼く] {{失效标记}}
+
+== 作品列表 ==
+=== 同人专辑 ===
+{{简单信息框架
+|列表=
+{{简单专辑信息
+|名称=片道切符
+}}
+
+
+}}
+
+== 参展信息 ==
+{{社团参展列表}}
+
+
+== 其他信息 ==
+
+{{Bottom}}

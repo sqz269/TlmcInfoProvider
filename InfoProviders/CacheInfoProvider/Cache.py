@@ -16,6 +16,9 @@ def get_url_path(url):
     parsed = urlparse(url)
     return parsed.path
 
+def get_cache_id(url, id):
+    return id + "__" + NormalizePath(unquote(get_url_path(url)))
+
 def cached(cache_id, cache_dir, debug=False):
     if (not os.path.isdir(cache_dir)):
         os.makedirs(cache_dir, exist_ok=True)
