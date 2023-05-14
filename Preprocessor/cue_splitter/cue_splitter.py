@@ -18,6 +18,12 @@ import threading
 import subprocess
 from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED
 
+# WARN: THERE ARE CASES WHERE THE SPLIT OPERATION WILL FAIL,
+# RESULTING IN A 0 BYTE FILE. NEED TO ADD CHECK FOR THIS AND
+# RE-TRY THE SPLIT OPERATION.
+
+# ALSO FFMPEG COMMAND NEEDS TO BE VALIDATED
+
 # sys.path.append(r"C:\PROG\TlmcTagger\InfoProviderV3Pipeline\Preprocessor\cue_split_info_provider\CueSplitInfoProvider\CueSplitInfoProvider\bin\Debug\net6.0")
 
 print(os.path.join(os.getcwd(), r"Preprocessor/cue_splitter/lib/CueSplitInfoProvider.dll"))
@@ -135,6 +141,17 @@ def load_file_list(file_list):
     return data
 
 print_logs = {}
+cmd_exec = []
+"""
+cmd_exec type
+{
+    "cmd": "<FFMPEG CMD>",
+    "file": "<FILE NAME>",
+    "status": "<STATUS>",
+    "begin": "<BEGIN TIME>",
+    "end": "<END TIME>"
+}
+"""
 
 def process_item(file_list, file: str, ffmpeg_path):
     cap_time = re.compile(r"time=(\d{2}:\d{2}:\d{2}.\d{2})")
@@ -143,8 +160,17 @@ def process_item(file_list, file: str, ffmpeg_path):
         ident = threading.get_ident()
         item = file_list["queued"][file]
 
+        # PROBE EACH OUTPUT FILE TO SEE IF IT EXISTS AND IS COMPLETE AFTER PROCESSING
         for idx, track in enumerate(item["Tracks"]):
+            command_telementry = {
+
+            }
             cmd = mk_ffmpeg_cmd(track, item)
+
+            command_telementry["cmd"] = cmd
+
+            st = time.time()
+            command_telementry["begin"] = st
 
             proc = subprocess.Popen(ffmpeg_path + " " + cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, shell=True, encoding="utf-8")
 
@@ -153,7 +179,23 @@ def process_item(file_list, file: str, ffmpeg_path):
                 print_logs[ident] = f"[{idx + 1}/{len(item['Tracks'])}] {file}"
 
             proc.wait()
+            et = time.time()
+            ec = proc.returncode
+
+            command_telementry["file"] = track["TrackName"]
+            command_telementry["status"] = ec
+            command_telementry["end"] = et
+
             time.sleep(0.6)
+
+        for idx, track, in enumerate(item["Tracks"]):
+            # Perform a final check to make sure the file exists and is not empty
+            out = os.path.join(item["Root"], track["TrackName"])
+            if (not os.path.exists(out)):
+                raise Exception(f"Track {track} does not exist after processing")
+
+            if (os.path.getsize(out) == 0):
+                raise Exception(f"Track {track} is empty after processing")
 
         item["processed"] = True
         file_list["processed"].update({file: item})
@@ -239,3 +281,6 @@ if (__name__ == '__main__'):
     finally:
         with open(file_list, "w", encoding="utf-8") as f:
             json.dump(loaded_list, f, indent=4, ensure_ascii=False)
+        
+        with open("ffmpeg_exec.txt", "w", encoding="utf-8") as f:
+            f.write(json.dumps(cmd_exec, indent=4, ensure_ascii=False))
