@@ -8,3 +8,5 @@ wikitextparser
 peewee
 bs4
 lxml
+xxhash
+googletrans
