@@ -58,9 +58,9 @@ def mk_ffmpeg_cmd(track, info):
 
     out = os.path.join(info["Root"], track["TrackName"])
     if (not track["Duration"]):
-        return f'-i "{audio_path}" -ss {track["Begin"]} -movflags faststart "{out}" -y -stats -v quiet'
+        return f'-i \'{audio_path}\' -ss {track["Begin"]} -movflags faststart \'{out}\' -y -stats -v quiet'
 
-    return f'-i "{audio_path}" -ss {track["Begin"]} -t {track["Duration"]} -movflags faststart "{out}" -y -stats -v quiet'
+    return f'-i \'{audio_path}\' -ss {track["Begin"]} -t {track["Duration"]} -movflags faststart \'{out}\' -y -stats -v quiet'
 
 def generate_file_list(root, list_file):
     print("Generating file list...")
@@ -153,12 +153,16 @@ cmd_exec type
 }
 """
 
-def process_item(file_list, file: str, ffmpeg_path):
+def process_item(file_list, file: str, ffmpeg_path, retry_failed=False):
+    k = "queued"
+    if (retry_failed):
+        k = "failed"
+
     cap_time = re.compile(r"time=(\d{2}:\d{2}:\d{2}.\d{2})")
     global print_logs
     try:
         ident = threading.get_ident()
-        item = file_list["queued"][file]
+        item = file_list[k][file]
 
         # PROBE EACH OUTPUT FILE TO SEE IF IT EXISTS AND IS COMPLETE AFTER PROCESSING
         for idx, track in enumerate(item["Tracks"]):
@@ -173,6 +177,7 @@ def process_item(file_list, file: str, ffmpeg_path):
             command_telementry["begin"] = st
 
             proc = subprocess.Popen(ffmpeg_path + " " + cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, universal_newlines=True, shell=True, encoding="utf-8")
+            cmd_exec.append(command_telementry)
 
             for line in proc.stdout:
                 progress_time = cap_time.search(line)
@@ -199,7 +204,7 @@ def process_item(file_list, file: str, ffmpeg_path):
 
         item["processed"] = True
         file_list["processed"].update({file: item})
-        del file_list["queued"][file]
+        del file_list[k][file]
 
         audio_track = item["AudioFilePath"] if not item["AudioFilePathGuessed"] else item["AudioFilePathGuessed"]
 
@@ -208,6 +213,8 @@ def process_item(file_list, file: str, ffmpeg_path):
     except Exception as e:
         print(Fore.RED + f"Failed to process {file}")
         traceback.print_exc()
+        if (retry_failed):
+            return
 
         file_list["failed"].update({file: item})
         item["error"] = str(e)
@@ -244,9 +251,23 @@ if (__name__ == '__main__'):
     queued = 0
     processes = []
     try:
-        with ThreadPoolExecutor(max_workers=1) as executor:
-            for file in list(loaded_list["queued"].keys()).copy():
-                processes.append(executor.submit(process_item, loaded_list, file, ffmpeg_path))
+        with ThreadPoolExecutor(max_workers=os.cpu_count() / 2) as executor:
+            process_list = None
+            retry_failed = False
+            if (len(loaded_list["queued"]) != 0):
+                process_list = list(loaded_list["queued"].keys())
+            elif (len(loaded_list["failed"]) != 0):
+                print("Retrying failed processes")
+                process_list = list(loaded_list["failed"].keys())
+                retry_failed = True
+            else:
+                print("Nothing to process")
+                exit(0)
+
+            input("Press enter to continue...")
+
+            for file in process_list:
+                processes.append(executor.submit(process_item, loaded_list, file, ffmpeg_path, retry_failed))
                 queued += 1
                 print(f"Queued {queued} processes", end="\r")
 
@@ -263,7 +284,7 @@ if (__name__ == '__main__'):
 
                     # print("\n\n")
                     wait(processes, timeout=0.5, return_when=ALL_COMPLETED)
-                    os.system("cls")
+                    os.system("cls" if os.name == "nt" else "clear")
             except Exception as e:
                 if (isinstance(e, KeyboardInterrupt)):
                     print("Interrupted by user.")
