@@ -1,4 +1,4 @@
-# Transcoding Flac to AAC for HTS
+# Transcoding Flac to AAC for HLS
 
 ## Compile FFMpeg with libfdk-aac
 ### Ubuntu
