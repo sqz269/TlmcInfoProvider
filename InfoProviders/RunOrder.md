@@ -41,6 +41,8 @@ Run: `Preprocessor/ext_del.py`
 ---
 
 ## 1.2 Cue Splitting
+
+#### TODO: PERSERVE CUE FILE
 The script will split cues into tracks and save them as separate files, then it will delete the original cue and track files.
 
 ### This has to be done before any other processing
@@ -67,11 +69,20 @@ Normalize audio files to a target volume. By default, the script uses EBU R128 l
 
 ### Note that this operation may decrease audio quality.
 
-### this script can also be run as the last step of the pipeline (<- recommended)
+### this script can also be run as the last step of the pipeline but should run before HLS transcode
 
 ### WARNING: this operation will take a long time. run in detached screen session
 
 Run `Preprocessor/track_normalizer/normalize.py`
+
+---
+
+## 1.4 Transcoding for HLS
+
+Transcode audio files to HLS compatible format.
+
+Run `Preprocessor\Transcode\transcode.py`
+- Note that the default transcoding profile are set to output `vbr 3` (around 128kbps) AAC audio. You can change the profile by editing the script and changing the `mk_ffmpeg_cmd` function.
 
 ---
 
@@ -111,6 +122,8 @@ Run following scripts in order
 1. `InfoProviders/BasicInfoProvider/push-scanned-artist.py`
 2. `InfoProviders/BasicInfoProvider/flac-scanned-push-to-db.py`
 
+---
+
 # Section 3: ThWiki.cc Info Providers
 
 Scripts must be run in order listed
@@ -134,3 +147,10 @@ Run `InfoProviders\ThcInfoProvider\ExternalData\get-original-alb-trk.py`
 ## 3.4 Push Album Metadata to Database
 
 Run `InfoProviders/ThcInfoProvider/ThcBasicDataCommit/commit-basic-data-to-db.py`
+
+--- 
+## 3.5 Artist Info Provider
+Run `InfoProviders\ThcInfoProvider\ThcArtistInfoProvider\artist-info-provider.py`
+
+## 3.6 Push Artist Info to Database
+Run `InfoProviders\ThcInfoProvider\ThcBasicDataCommit\commit-artist-data-to-db.py`
