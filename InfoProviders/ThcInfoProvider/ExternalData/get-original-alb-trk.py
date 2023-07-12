@@ -45,7 +45,7 @@ def discover():
             count += 1
             original_songs += len(qp)
             print(f"Queried {count} tracks, {original_songs} Original songs [{len(qp)}]", end="\r")
-            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名."}, default="<ERROR>").title_en
+            SongQuery.query(q[0], q[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名"}, default="<ERROR>").title_en
 
 def load_existing(path):
     print("Loading existing...")

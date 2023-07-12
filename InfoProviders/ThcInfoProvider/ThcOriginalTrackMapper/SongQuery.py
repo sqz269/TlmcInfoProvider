@@ -18,7 +18,9 @@ class Lang:
 
 param_extr = re.compile("\{\{(.+)\|\d+\|(.+)\}\}")
 
-def bracket_split(str, fail_on_char=True, brackets={"(": ")", "{": "}", "[": "]"}):
+def bracket_split(str: str, fail_on_char=True, brackets={"(": ")", "{": "}", "[": "]"}):
+    if (str.startswith("<!--") and str.endswith("-->")):
+        return []
     stack = []
     splitted = []
     current = ""
@@ -63,7 +65,7 @@ def get_original_song_query_params(songs: List[str]) -> List[Tuple[str, str]]:
                 .replace("萃夢想", "萃梦想") \
                 .replace("憑依華", "凭依华") \
                 .replace("イザナギオブジェクト", "伊奘诺物质")
-            querable.append((groups[0], groups[1].strip("0|")))
+            querable.append((groups[0], groups[1].strip("|")))
     
     return querable
 
@@ -162,6 +164,10 @@ class SongQuery:
 
     @staticmethod
     def query(source, index, autofail:set={}, default=None):
+        # the index could be padded with leading zeros, we need to trim out the LEADING zeros to match the database
+        index: str = index
+        index = index.lstrip("0")
+
         src_query = OriginalTrack.select().where(OriginalTrack.source == source)
         query = OriginalTrack.select().where((OriginalTrack.source == source) & 
                                     ((OriginalTrack.index == index) | (OriginalTrack.sp_index == index) | (OriginalTrack.sp_idx_e == index)))

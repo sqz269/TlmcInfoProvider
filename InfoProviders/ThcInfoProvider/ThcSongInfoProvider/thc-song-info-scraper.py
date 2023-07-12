@@ -250,6 +250,9 @@ class ThWikiCc:
                 else:
                     if ((not name.isdigit() and not (name in ThWikiCc.TRACK_KNOWN_ARGS_IGNORE))):
                         print(f"Unknown track info param: {name} in track info: {track}")
+            
+            if ('title_jp' not in track):
+                continue
 
             tracks.append(track)
 
@@ -324,6 +327,8 @@ def import_data():
     print("\nImport complete")
 
 def process_album(album: Album):
+    if (album.album_id == '68edbb0e-27ef-4d6d-a939-e03eb8369ab9'):
+        pass
     try:
         album_info, track_info, seller_info = ThWikiCc.process(album.data_source)
     except:

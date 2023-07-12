@@ -29,7 +29,8 @@ def mk_ffmpeg_cmd(path, out_path, use_libfdk_aac):
     lib = "libfdk_aac" if use_libfdk_aac else "aac"
     path = shlex.quote(path)
     out_path = shlex.quote(out_path)
-    return ["-i", f"{path}", "-map", "0:a", "-map", "0:v?", "-c:a", lib, "-vbr", "3", "-c:v", "copy", f"{out_path}", "-y"]
+    # return ["-i", f"{path}", "-map", "0:a", "-map", "0:v?", "-c:a", lib, "-vbr", "3", "-c:v", "copy", f"{out_path}", "-y"]
+    return ["-i", f"{path}", ]
 
 def calc_total_size(path_list):
     sz = 0

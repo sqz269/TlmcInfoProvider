@@ -40,6 +40,40 @@ def import_data():
         QueryData.bulk_create(init_data[i:i+BATCH_SIZE])
     print("\nImport complete")
 
+
+def import_data_from_json(json_path):
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+    
+    init_data = []
+    for entry in data:
+        album_info = entry["AlbumInfo"]
+
+        alb_id = None
+        if (len(entry["Discs"]) > 1):
+            alb_id = album_info["AlbumId"]
+        else:
+            alb_id = entry["Discs"][list(entry["Discs"].keys())[0]]["DiscId"]
+
+        q_data_init = {
+            "album_id": alb_id,
+            "album_name": album_info["AlbumName"],
+            "query_result": None,
+            "query_exact_result": None,
+            "query_status": QueryStatus.PENDING
+        }
+
+        q_data = QueryData(**q_data_init)
+        init_data.append(q_data)
+
+    print("Saving data to Query Data Database...")
+    BATCH_SIZE = 2000
+    for i in range(0, len(init_data), BATCH_SIZE):
+        print(f"Saving Query Data {i + BATCH_SIZE}/{len(init_data)}", end="\r")
+        QueryData.bulk_create(init_data[i:i+BATCH_SIZE])
+    print("\nImport complete")
+
+
 def import_diff():
     pass
 
@@ -211,7 +245,8 @@ def import_updated():
 
 if (__name__ == '__main__'):
     if not QueryData.select().exists():
-        import_data()
+        # import_data()
+        import_data_from_json(r"D:\PROG\TlmcTagger\InfoProviderMk4\DbPush\tmp-merge-result-id-assignment.json")
     else:
         print("Query Data already exists")
         print("Existing Query Data count: ", QueryData.select().count())

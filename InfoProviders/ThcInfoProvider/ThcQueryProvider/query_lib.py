@@ -16,7 +16,7 @@ def query_thc(album_name):
         'Referer': 'https://thwiki.cc/',
         'X-Requested-With': 'XMLHttpRequest',
         'sec-ch-ua-mobile': '?0',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
         'sec-ch-ua-platform': '"Windows"',
     }
 

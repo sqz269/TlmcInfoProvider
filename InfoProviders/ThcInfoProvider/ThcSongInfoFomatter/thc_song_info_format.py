@@ -66,7 +66,7 @@ def resolve_original_tracks(track: Track, abbriv_map: Dict):
     org_tracks = []
     for qp in query_params:
         try:
-            result = SongQuery.query(qp[0], qp[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名"})
+            result = SongQuery.query(qp[0], qp[1], autofail={"地灵殿PH音乐名", "东方夏夜祭音乐名", "Cradle音乐名", "东方音焰火音乐名", "东方魔宝城音乐名", "8MPF音乐名", "8MPF音乐名."})
         except:
             print("\n\n[ERROR] Failed to resolve original track: {}\n\n".format(qp))
             continue

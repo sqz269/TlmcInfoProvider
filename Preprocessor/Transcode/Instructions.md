@@ -65,4 +65,3 @@
     make install && \
     hash -r
     ```
-```
